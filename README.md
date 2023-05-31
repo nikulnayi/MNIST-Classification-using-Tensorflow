@@ -2,81 +2,59 @@
 
 This repository contains code for training and evaluating a deep learning model to classify handwritten digits using the MNIST dataset. The code demonstrates three different approaches to building the model: sequential, functional, and custom model classes.
 
-## Table of Contents
+## Dataset
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Model Architectures](#model-architectures)
-- [Dataset](#dataset)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+The MNIST dataset consists of a training set of 60,000 handwritten digits images and a test set of 10,000 images. Each image is a grayscale 28x28 pixel image, representing a digit from 0 to 9.
 
-## Introduction
+## Getting Started
 
-The MNIST dataset is a popular benchmark dataset in the field of computer vision and machine learning. It consists of a large number of 28x28 grayscale images of handwritten digits (0-9) and corresponding labels. The goal is to train a model that can accurately classify these images into their respective digit classes.
+To run the code, follow these steps:
 
-This repository provides an implementation of the MNIST classification task using TensorFlow and Keras. It showcases three different approaches to building the model: sequential, functional, and custom model classes. Each approach demonstrates a different way of defining the model architecture and training process.
+1. Clone the repository to your local machine.
+2. Make sure you have the required dependencies installed. The code relies on TensorFlow, matplotlib, and numpy.
+3. Run the `main.py` script using Python.
 
-## Installation
+## Code Structure
 
-1. Clone the repository:
+The repository is organized as follows:
 
-```
-git clone https://github.com/username/mnist_classification.git
-```
-
-2. Install the required dependencies:
-
-```
-pip install tensorflow matplotlib numpy
-```
-
-## Usage
-
-1. Navigate to the project directory:
-
-```
-cd mnist_classification
-```
-
-2. Run the main script:
-
-```
-python main.py
-```
-
-The script will load the MNIST dataset, preprocess the data, define the model architecture, train the model, and evaluate its performance on the test set. The training and evaluation results will be displayed in the console.
+- `main.py`: The main script that loads the MNIST dataset, preprocesses the data, defines the model architecture, trains the model, and evaluates its performance on the test set.
+- `deeplearningModels.py`: A module containing the `functional_model` and `MyCustomeModel` classes that define the model architectures using the functional and custom approaches, respectively.
+- `utils.py`: A module containing utility functions, including `display_some_example` for visualizing random examples from the dataset.
 
 ## Model Architectures
 
-This repository demonstrates three different approaches to defining the model architecture:
+The code demonstrates three different model architectures for the MNIST classification task:
 
-1. Sequential: This approach uses the `tensorflow.keras.Sequential` class to build the model. The layers are added sequentially, one after the other.
+1. Sequential Model: This approach uses the TensorFlow Keras `Sequential` model to define the model architecture. It consists of convolutional, pooling, batch normalization, and dense layers.
 
-2. Functional: This approach uses the functional API of Keras to build the model. It provides more flexibility in defining complex architectures with shared layers or multiple inputs/outputs.
+2. Functional Approach: This approach uses the TensorFlow Keras functional API to define the model architecture. It follows a similar structure to the sequential model, but the layers are defined using functional API calls.
 
-3. Custom Model Class: This approach defines a custom model class that inherits from `tensorflow.keras.Model`. The layers are defined as attributes of the class, and the forward pass is implemented in the `call` method.
+3. Custom Model Class: This approach defines a custom model class by inheriting from the TensorFlow Keras `Model` class. The layers are defined as attributes of the class, and the model's forward pass is implemented in the `call` method.
 
-Feel free to explore and compare these different approaches to gain a better understanding of model construction in TensorFlow and Keras.
+## Usage
 
-## Dataset
+The `main.py` script provides an example of how to use the code to train and evaluate the model. The script performs the following steps:
 
-The MNIST dataset is loaded using the `tensorflow.keras.datasets.mnist` module. It consists of 60,000 training images and 10,000 test images. The images are grayscale, with pixel values ranging from 0 to 255. The labels are integers representing the digit classes (0-9).
+1. Loads the MNIST dataset and prints the shapes of the training and test sets.
+2. Preprocesses the data by normalizing the pixel values and expanding the dimensions to match the model input shape.
+3. Converts the labels to one-hot encoded vectors.
+4. Defines the model architecture using one of the three approaches: sequential, functional, or custom.
+5. Compiles the model with an optimizer, loss function, and evaluation metrics.
+6. Trains the model on the training data for a specified number of epochs.
+7. Evaluates the model's performance on the test set.
 
-The dataset is preprocessed by normalizing the pixel values to the range of 0 to 1 and expanding the dimensions of the input arrays to match the expected shape of the models.
-
-## Results
-
-After training the models, the script evaluates their performance on the test set using the accuracy metric. The evaluation results, including the loss and accuracy, are displayed in the console.
-
-The models can be further evaluated or used for predictions on new images by calling the `evaluate` or `predict` methods provided by the Keras API.
-
-## Contributing
-
-Contributions to this repository are welcome. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Feel free to modify the code to experiment with different model architectures, hyperparameters, or training techniques.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for your own purposes.
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## Acknowledgments
+
+- The MNIST dataset is a widely used benchmark dataset in the field of machine learning and computer vision.
+- The code in this repository is based on examples from the TensorFlow documentation and tutorials.
+
+## Conclusion
+
+This repository provides a straightforward implementation of a deep learning model for MNIST digit classification using different model architectures. It serves as a starting point for understanding and experimenting with image classification tasks and can be used as a reference for building more complex models.
